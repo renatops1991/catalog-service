@@ -1,0 +1,16 @@
+{
+    "name": "renatops1991/catalog-service",
+    "description": "App catalog service",
+    "authors": [
+        {
+            "name": "Renato Pereira",
+            "email": "renatops1991@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Application\\": "src/Application/"
+        }
+    },
+    "require": {}
+}
