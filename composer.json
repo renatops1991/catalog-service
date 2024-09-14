@@ -12,5 +12,12 @@
             "Application\\": "src/Application/"
         }
     },
-    "require": {}
+    "require-dev": {
+        "pestphp/pest": "^3.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
 }
