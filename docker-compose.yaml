@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    container_name: catalog-php
+    image: renatops1991/php8-fpm
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      - catalog-service-network
+
+  nginx:
+    image: nginx:latest
+    container_name: catalog-nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - catalog-service-network
+
+networks:
+  catalog-service-network:
+    driver: bridge
