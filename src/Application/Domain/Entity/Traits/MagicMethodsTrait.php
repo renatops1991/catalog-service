@@ -3,7 +3,7 @@
 
 namespace Application\Domain\Entity\Traits;
 
-trait MagicsMethodTrait {
+trait MagicMethodsTrait {
     public function __get($property) {
         if($this->$property) return $this->$property;
 
