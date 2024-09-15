@@ -18,4 +18,9 @@ class Category
     public function toggleActive(): void {
         $this->isActive = !$this->isActive;
     }
+
+    public function update(string $name, string $description = ''): void {
+        $this->name = $name;
+        $this->description = $description;
+    }
 }
