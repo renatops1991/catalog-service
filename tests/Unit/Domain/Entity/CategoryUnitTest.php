@@ -2,6 +2,7 @@
 namespace Tests\Unit\Domain\Entity;
 
 use Application\Domain\Entity\Category;
+use Application\Domain\Exception\EntityExceptionError;
 
 describe('Category', function() {
     beforeEach(function(){
@@ -40,6 +41,7 @@ describe("toggleActive", function(){
     });
 });
 
+
 describe("update", function(){
     beforeEach(function(){
         $this->category = new Category(
@@ -54,4 +56,20 @@ describe("update", function(){
         expect($this->category->name)->toEqual("john")
             ->and($this->category->description)->toEqual("doe");
     });
+
+    it('Should throw EntityExceptionError if description is less than two characters', function(){
+        $this->category = new Category(
+            name: 'foo',
+            description: 'b',
+            isActive: false
+        );
+    })->throws(EntityExceptionError::class, "Description must be greater than two characters");
+
+    it('Should throw EntityExceptionError if name is less than two characters', function(){
+        $this->category = new Category(
+            name: 'r',
+            description: 'bar',
+            isActive: false
+        );
+    })->throws(EntityExceptionError::class, "Name must be greater than two characters and less than 100 characters");
 });
