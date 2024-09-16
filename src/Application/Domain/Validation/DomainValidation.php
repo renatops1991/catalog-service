@@ -14,4 +14,10 @@ class DomainValidation {
             throw new EntityExceptionError($exceptionMessage ?? "Property cannot be null");
         }
     }
+
+    public static function validatePropertyRange(string $propertyValue, int $min = 2, int $max = 255, string $exceptionMessage = null): void {
+        $propertyLength = strlen($propertyValue);
+        if($propertyLength < $min || $propertyLength > $max)
+            throw new EntityExceptionError($exceptionMessage ?? "Property must be between {$min} and {$max}");
+    }
 }
