@@ -9,6 +9,9 @@ class Category
 {
     use MagicMethodsTrait;
 
+    /**
+     * @throws EntityExceptionError
+     */
     public function __construct(
         protected string $id = '',
         protected string $name = '',
@@ -22,6 +25,9 @@ class Category
         $this->isActive = !$this->isActive;
     }
 
+    /**
+     * @throws EntityExceptionError
+     */
     public function update(string $name, string $description = ''): void {
         $this->validate();
 
@@ -29,6 +35,9 @@ class Category
         $this->description = $description;
     }
 
+    /**
+     * @throws EntityExceptionError
+     */
     public function validate(): void {
          if(empty($this->name)) throw new EntityExceptionError("This name not be empty");
 
