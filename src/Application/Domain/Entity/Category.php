@@ -4,6 +4,7 @@ namespace Application\Domain\Entity;
 
 use Application\Domain\Entity\Traits\MagicMethodsTrait;
 use Application\Domain\Exception\EntityExceptionError;
+use Application\Domain\Validation\DomainValidation;
 
 class Category
 {
@@ -39,14 +40,8 @@ class Category
      * @throws EntityExceptionError
      */
     public function validate(): void {
-         if(empty($this->name)) throw new EntityExceptionError("This name not be empty");
-
-         if(strlen($this->name) <= 2 && strlen($this->name > 100)) {
-             throw new EntityExceptionError("Name must be greater than two characters and less than 100 characters");
-         }
-
-         if(isset($this->description) && (strlen($this->description) <= 2 && strlen($this->description > 255))) {
-             throw new EntityExceptionError("Description must be greater than two characters and less than 255 characters");
-         }
+        DomainValidation::isNotNull($this->name, "This name not be empty");
+        DomainValidation::validatePropertyRange($this->name, 2, 100, "Name must be greater than two characters and less than 100 characters");
+        DomainValidation::validateOptionalPropertyRange($this->description, 2, 255, "Description must be greater than two characters and less than 255 characters");
     }
 }
