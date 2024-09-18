@@ -41,7 +41,6 @@ describe("toggleActive", function(){
     });
 });
 
-
 describe("update", function(){
     beforeEach(function(){
         $this->category = new Category(
@@ -72,4 +71,13 @@ describe("update", function(){
             isActive: false
         );
     })->throws(EntityExceptionError::class, "Name must be greater than two characters and less than 100 characters");
+
+    it('Should not throw EntityExceptionError if description or name has correct value', function(){
+        $this->category = new Category(
+            name: 'foo',
+            description: 'john foo bar',
+            isActive: false
+        );
+    })->throwsNoExceptions();
+
 });

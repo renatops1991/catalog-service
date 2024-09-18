@@ -27,6 +27,10 @@ describe('Domain Validation', function () {
         $this->validation::validateOptionalPropertyRange('f', 2, 5, "Property must be between 2 and 5");
     })->throws(EntityExceptionError::class, "Property must be between 2 and 5");
 
+    it("Should throw EntityExceptionError if property is not null and quantity character greater than range value provided", function() {
+        $this->validation::validateOptionalPropertyRange('foobarxis', 2, 5, "Property must be between 2 and 5");
+    })->throws(EntityExceptionError::class, "Property must be between 2 and 5");
+
     it("Should not throw  EntityExceptionError if property provided is null", function() {
         $this->validation::validateOptionalPropertyRange('', 2, 5, "Property must be between 2 and 5");
     })->throwsNoExceptions();
