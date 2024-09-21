@@ -19,5 +19,9 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "require": {
+        "ramsey/uuid": "^4.7",
+      "ext-http": "*"
     }
 }
