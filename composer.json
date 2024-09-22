@@ -13,7 +13,8 @@
         }
     },
     "require-dev": {
-        "pestphp/pest": "^3.0"
+        "pestphp/pest": "^3.0",
+        "mockery/mockery": "^1.6"
     },
     "config": {
         "allow-plugins": {
@@ -21,7 +22,6 @@
         }
     },
     "require": {
-        "ramsey/uuid": "^4.7",
-      "ext-http": "*"
+        "ramsey/uuid": "^4.7"
     }
 }

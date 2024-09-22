@@ -17,4 +17,8 @@ trait MagicMethodsTrait {
         $class = get_class($this);
         throw new \Exception("Property {$property} does not exist in {$class}");
     }
+
+    public function getId(): string {
+        return (string) $this->id;
+    }
 }

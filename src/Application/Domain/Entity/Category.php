@@ -5,6 +5,7 @@ namespace Application\Domain\Entity;
 use Application\Domain\Entity\Traits\MagicMethodsTrait;
 use Application\Domain\Exception\EntityExceptionError;
 use Application\Domain\Validation\DomainValidation;
+use Application\Domain\ValueObject\Uuid;
 
 class Category
 {
@@ -14,11 +15,12 @@ class Category
      * @throws EntityExceptionError
      */
     public function __construct(
-        protected string $id = '',
+        protected Uuid|string $id = '',
         protected string $name = '',
         protected string $description = '',
         protected bool $isActive = true,
     ) {
+        $this->id = $this->id ? new Uuid($this->id) : Uuid::generateId();
         $this->validate();
     }
 

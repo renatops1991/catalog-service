@@ -3,6 +3,7 @@ namespace Tests\Unit\Domain\Entity;
 
 use Application\Domain\Entity\Category;
 use Application\Domain\Exception\EntityExceptionError;
+use Application\Domain\ValueObject\Uuid;
 
 describe('Category', function() {
     beforeEach(function(){
@@ -16,7 +17,8 @@ describe('Category', function() {
     it('Should exists properties in Category class', function(){
         expect($this->category->name)->toEqual('foo')
             ->and($this->category->description)->toEqual('bar')
-            ->and($this->category->isActive)->toEqual(true);
+            ->and($this->category->isActive)->toEqual(true)
+            ->and($this->category->id)->toBeInstanceOf(Uuid::class);
     });
 });
 
@@ -41,19 +43,21 @@ describe("toggleActive", function(){
     });
 });
 
-describe("update", function(){
-    beforeEach(function(){
+
+describe("update", function() {
+    it('Should update name and description property by Id', function() {
+        $uuid = Uuid::generateId();
         $this->category = new Category(
+            id: $uuid,
             name: 'foo',
             description: 'bar',
             isActive: false
         );
-    });
 
-    it('Should update name and description property by Id', function() {
         $this->category->update("john", "doe");
         expect($this->category->name)->toEqual("john")
-            ->and($this->category->description)->toEqual("doe");
+            ->and($this->category->description)->toEqual("doe")
+            ->and($this->category->getId())->toEqual($uuid);
     });
 
     it('Should throw EntityExceptionError if description is less than two characters', function(){
