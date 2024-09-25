@@ -15,7 +15,7 @@ class Category
      * @throws EntityExceptionError
      */
     public function __construct(
-        protected Uuid|string $id = '',
+        protected Uuid | string $id = '',
         protected string $name = '',
         protected string $description = '',
         protected bool $isActive = true,

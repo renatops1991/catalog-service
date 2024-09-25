@@ -20,7 +20,7 @@ class Uuid {
         return $this->id;
     }
 
-    public function isValidId(string $id): void {
+    private function isValidId(string $id): void {
         if(!UuidGenerator::isValid($id)) {
             throw new InvalidArgumentException("Id provided is not valid");
         }
