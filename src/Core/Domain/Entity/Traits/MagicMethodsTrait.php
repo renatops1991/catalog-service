@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Application\Domain\Entity\Traits;
+namespace Core\Domain\Entity\Traits;
 
 trait MagicMethodsTrait
 {

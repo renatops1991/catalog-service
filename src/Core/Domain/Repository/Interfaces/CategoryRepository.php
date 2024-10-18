@@ -1,8 +1,8 @@
 <?php
 
-namespace Application\Domain\Repository\Interfaces;
+namespace Core\Domain\Repository\Interfaces;
 
-use Application\Domain\Entity\Category;
+use Core\Domain\Entity\Category;
 
 interface CategoryRepository
 {

@@ -1,7 +1,7 @@
 <?php
 namespace Tests\Unit\Domain\Entity\ValueObject;
 
-use Application\Domain\ValueObject\Uuid;
+use Core\Domain\ValueObject\Uuid;
 use \InvalidArgumentException;
 
 describe('Uuid', function () {

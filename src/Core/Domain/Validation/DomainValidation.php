@@ -1,8 +1,8 @@
 <?php
 
-namespace Application\Domain\Validation;
+namespace Core\Domain\Validation;
 
-use Application\Domain\Exception\EntityExceptionError;
+use Core\Domain\Exception\EntityExceptionError;
 
 class DomainValidation {
 

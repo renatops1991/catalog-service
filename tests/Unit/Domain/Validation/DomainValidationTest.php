@@ -3,8 +3,8 @@
 namespace Tests\Unit\Domain\Validation;
 
 
-use Application\Domain\Exception\EntityExceptionError;
-use Application\Domain\Validation\DomainValidation;
+use Core\Domain\Exception\EntityExceptionError;
+use Core\Domain\Validation\DomainValidation;
 
 describe('Domain Validation', function () {
     beforeEach(function (){

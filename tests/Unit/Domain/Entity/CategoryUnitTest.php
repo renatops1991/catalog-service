@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Domain\Entity;
 
-use Application\Domain\Entity\Category;
-use Application\Domain\Exception\EntityExceptionError;
-use Application\Domain\ValueObject\Uuid;
+use Core\Domain\Entity\Category;
+use Core\Domain\Exception\EntityExceptionError;
+use Core\Domain\ValueObject\Uuid;
 
 describe('Category', function () {
     beforeEach(function () {

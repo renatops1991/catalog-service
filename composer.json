@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Application\\": "src/Application/"
+            "Core\\": "src/Core/"
         }
     },
     "require-dev": {

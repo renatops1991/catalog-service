@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Domain\ValueObject;
+namespace Core\Domain\ValueObject;
 
 use \InvalidArgumentException;
 use Ramsey\Uuid\Uuid as UuidGenerator;

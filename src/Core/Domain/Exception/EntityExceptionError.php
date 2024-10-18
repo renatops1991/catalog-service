@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Domain\Exception;
+namespace Core\Domain\Exception;
 
 class EntityExceptionError extends \Exception {
 

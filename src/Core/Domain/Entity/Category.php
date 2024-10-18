@@ -1,11 +1,11 @@
 <?php
 
-namespace Application\Domain\Entity;
+namespace Core\Domain\Entity;
 
-use Application\Domain\Entity\Traits\MagicMethodsTrait;
-use Application\Domain\Exception\EntityExceptionError;
-use Application\Domain\Validation\DomainValidation;
-use Application\Domain\ValueObject\Uuid;
+use Core\Domain\Entity\Traits\MagicMethodsTrait;
+use Core\Domain\Exception\EntityExceptionError;
+use Core\Domain\Validation\DomainValidation;
+use Core\Domain\ValueObject\Uuid;
 use DateTime;
 
 class Category
@@ -13,6 +13,7 @@ class Category
     use MagicMethodsTrait;
 
     /**
+     * @throws \DateMalformedStringException
      * @throws EntityExceptionError
      */
     public function __construct(
