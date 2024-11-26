@@ -22,9 +22,25 @@ describe('CreateCategoryUseCase::execute', function () {
         );
 
         $this->repositoryMock = \Mockery::mock(\stdClass::class, CategoryRepository::class);
-        $this->repositoryMock->shouldReceive('create')->once()->andReturn($this->categoryEntityMock);
+        $this->repositoryMock->shouldReceive('create')->andReturn($this->categoryEntityMock);
 
         $this->createCategoryUseCase = new CreateCategoryUseCase($this->repositoryMock);
+    });
+
+    test('Should call create method on repository with correct parameters', function () {
+        $createCategoryInputDtoMock = new CreateCategoryInputDto(
+            name: 'foo',
+            description: 'bar',
+            isActive: true
+        );
+        $this->repositorySpy = \Mockery::spy(\stdClass::class, CategoryRepository::class);
+        $this->repositorySpy->shouldReceive('create')->andReturn($this->categoryEntityMock);
+
+        $useCase = new CreateCategoryUseCase($this->repositorySpy);
+        $useCase->execute($createCategoryInputDtoMock);
+
+        expect($this->repositorySpy)->shouldHaveReceived('create')->once();
+
     });
 
     test('Should return correctly category object on success', function () {
@@ -43,6 +59,5 @@ describe('CreateCategoryUseCase::execute', function () {
             createdAt: '2009-12-19 16:54:20',
             updatedAt: '2009-12-19 16:54:20'
         ));
-        \Mockery::close();
     });
 });
