@@ -18,9 +18,9 @@ class Category
      */
     public function __construct(
         protected Uuid|string     $id = '',
-        protected string          $name = '',
-        protected string          $description = '',
-        protected bool            $isActive = true,
+        public string          $name = '',
+        public string          $description = '',
+        public bool            $isActive = true,
         protected DateTime|string $createdAt = '',
         protected DateTime|string $updatedAt = '',
     )
@@ -50,7 +50,7 @@ class Category
     /**
      * @throws EntityExceptionError
      */
-    public function validate(): void
+    private function validate(): void
     {
         DomainValidation::isNotNull($this->name, "This name not be empty");
         DomainValidation::validatePropertyRange($this->name, 2, 100, "Name must be greater than two characters and less than 100 characters");
