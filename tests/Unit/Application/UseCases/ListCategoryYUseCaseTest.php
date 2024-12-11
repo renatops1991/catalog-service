@@ -27,6 +27,24 @@ describe('ListCategoryUseCase::execute', function () {
         $this->listCategoryUseCaseMock = new ListCategoryUseCase($this->repositoryMock);
     });
 
+    test('Should call paginate method from repository with correct parameters', function () {
+        $listCategoryInputDtoFixture = new ListCategoryInputDto(
+            filter: 'id',
+        );
+        $this->repositorySpy = \Mockery::spy(\stdClass::class, CategoryRepository::class);
+        $this->repositorySpy->shouldReceive('paginate')->andReturn($this->paginationMock);
+
+        $listCategoryUseCaseMock = new ListCategoryUseCase($this->repositorySpy);
+        $listCategoryUseCaseMock->execute($listCategoryInputDtoFixture);
+
+        expect($this->repositorySpy)->shouldHaveReceived('paginate')
+            ->once()
+            ->withArgs(function ($filter) {
+                expect($filter)->toBe('id');
+                return true;
+            });
+    });
+
     test('Should return correctly list category array on success', function () {
         $listCategoryInputDtoFixture = new ListCategoryInputDto(
             filter: 'id',
