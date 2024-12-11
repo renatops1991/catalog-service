@@ -26,6 +26,12 @@ readonly class ListCategoryUseCase
         return new ListCategoryOutputDto(
             items: $categories->items(),
             total: $categories->total(),
+            total_per_page: $categories->totalPerPage(),
+            current_page: $categories->currentPage(),
+            first_page: $categories->firstPage(),
+            last_page: $categories->lastPage(),
+            to: $categories->to(),
+            from: $categories->from(),
         );
     }
 }

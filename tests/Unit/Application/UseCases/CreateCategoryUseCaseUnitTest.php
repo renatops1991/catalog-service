@@ -6,11 +6,15 @@ use Core\Application\UseCases\Category\CreateCategoryUseCase;
 use Core\Application\UseCases\DTO\Category\CreateCategoryInputDto;
 use Core\Application\UseCases\DTO\Category\CreateCategoryOutputDto;
 use Core\Domain\Entity\Category;
+use Core\Domain\Exception\EntityExceptionError;
 use Core\Domain\Repository\Interfaces\CategoryRepository;
 use Ramsey\Uuid\Uuid;
 
 describe('CreateCategoryUseCase::execute', function () {
-    beforeEach(function () {
+    beforeEach(/**
+     * @throws \DateMalformedStringException
+     * @throws EntityExceptionError
+     */ function () {
         $this->uuidFixture = (string)Uuid::uuid4();
         $this->categoryEntityMock = new Category(
             id: $this->uuidFixture,
@@ -39,8 +43,8 @@ describe('CreateCategoryUseCase::execute', function () {
         $useCase = new CreateCategoryUseCase($this->repositorySpy);
         $useCase->execute($createCategoryInputDtoMock);
 
-        expect($this->repositorySpy)->shouldHaveReceived('create')->once();
-
+        expect($this->repositorySpy)->shouldHaveReceived('create')
+            ->once();
     });
 
     test('Should return correctly category object on success', function () {
