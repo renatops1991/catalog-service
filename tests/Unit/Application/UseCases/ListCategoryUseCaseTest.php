@@ -30,7 +30,6 @@ function mockPagination(): Pagination
     $paginationMock->shouldReceive('from')->andReturn(1);
 
     return $paginationMock;
-
 };
 
 describe('ListCategoryUseCase::execute', function () {
